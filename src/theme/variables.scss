@@ -34,12 +34,39 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
+  primary:    rgb(26, 26, 26),
+  secondary:  #677077,
+  lightprimary:     #B5B5B7,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #000000,
+  beer:       #e6e6e6,
+  ye:       #009cf7,
+  cus: #484C7F,
+  kg: green,
+  energy:     #ff3a3a,
+  cornflower: #7393c2,
+  ice: #B6c7dd,
+  crepe: #efe4e6,
+  lagoon: #519188,
+  lake: #379aa5,
+  baby blue: #a9d4d9,
+  frozen: #789fb5,
+  white: #F2F2F2,
+  gray: #D9D9D9,
+  tao: #565759,
+  fah: #8EACBF,
+  t: #293040,
+  f: #58748C,
+  w: #F0F0F2,
+  p: #FCE7E4,
+  s:#FFECC4,
+  k: #D94625,
+
+  
+
+
 );
+
 
 
 // App iOS Variables
@@ -86,3 +113,7 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap');
+*{
+  font-family: 'Sarabun', sans-serif;
+}

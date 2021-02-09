@@ -1,10 +1,14 @@
+import { WelcomePage } from './../pages/welcome/welcome';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from '@ionic/storage';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { MenuUserPage } from '../pages/menu-user/menu-user';
+import { AboutPage } from '../pages/about/about';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,17 +16,17 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = WelcomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private storage: Storage) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'About', component: AboutPage, icon:'information-circle' },
+      // { title: 'List', component: ListPage, icon:'home' }
     ];
 
   }
@@ -41,4 +45,26 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  logout(){
+    this.storage.clear();
+    
+    this.nav.push(WelcomePage)
+
 }
+
+  home(){
+    this.storage.get('type').then((val) => {
+  
+    if(val=='1'){
+      this.nav.push(HomePage);
+    }else if(val=='2'){
+      this.nav.push(MenuUserPage);
+    }else{
+      alert('กรุณาเข้าสู่ระบบก่อน');
+    }
+  });
+  
+  }
+
+}//end class
